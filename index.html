@@ -19,14 +19,27 @@
     <![endif]-->
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="container">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Place</th>
+            <th>Magnitude</th>
+            <th>Coordinates</th>
+          </tr>
+        </thead>
+        <tbody id="body">
+        </tbody>
+      </table>
+    </div>
     <script id="entry-template" type="text/x-handlebars-template">
-      <div class="entry">
-        <h1>{{title}}</h1>
-        <div class="body">
-          {{body}}
-        </div>
-      </div>
+      {{#each this}}
+        <tr>
+          <td>{{ properties.place }}</td>
+          <td>{{ properties.mag }}</td>
+          <td>({{ geometry.coordinates }})</td>
+        </tr>
+      {{/each}}
     </script>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

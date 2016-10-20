@@ -1,5 +1,35 @@
 var source   = $("#entry-template").html();
 var template = Handlebars.compile(source);
-var context = {title: "My New Post", body: "This is my first post!"};
-var html    = template(context);
-console.log(html);
+
+var baseUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
+var startTime = "2014-01-02";
+var endTime = "2014-01-03";
+
+var query = baseUrl + '&starttime='+ startTime + '&endtime=' + endTime;
+console.log(query);
+$.ajax({
+            url: query,
+            type: "GET",
+            success: function(resultData) {
+                var features = resultData.features;
+                // console.log(features);
+                var html    = template(features);
+                $('#body').html(html);
+                // features.forEach(function(feature) {
+                //
+                //         // gives us the location of the earthquake
+                //         // console.log(feature.properties.place);
+                //         // gives us magnitude
+                //         // console.log(feature.properties.mag);
+                //         // this gives us each point, we can use this to plot points on google map
+                //         // console.log(feature.geometry);
+                //
+                //         // more information
+                //         // console.log(feature.properties.url);
+                // });
+            },
+            error : function(jqXHR, textStatus, errorThrown) {
+            },
+
+            timeout: 120000,
+        });
