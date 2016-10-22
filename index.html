@@ -19,6 +19,51 @@
     <![endif]-->
   </head>
   <body>
+    <nav class="navbar navbar-full navbar-light bg-faded">
+      <a class="navbar-brand" href="/">Live Earthquake Data</a>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-5">
+          <div class="form-group row">
+            <label for="example-date-input" class="col-xs-3 col-form-label">Start Date</label>
+            <div class="col-xs-9">
+              <input class="form-control" type="date" value="2014-01-02" id="start">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group row">
+            <label for="example-date-input" class="col-xs-3 col-form-label">End Date</label>
+            <div class="col-xs-9">
+              <input class="form-control" type="date" value="2014-01-03" id="end">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+          <div class="form-group row">
+            <label for="example-number-input" class="col-xs-3 col-form-label">Longitude</label>
+            <div class="col-xs-9">
+              <input class="form-control" type="number" value="-90" id="long">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="form-group row">
+            <label for="example-number-input" class="col-xs-3 col-form-label">Latitude</label>
+            <div class="col-xs-9">
+              <input class="form-control" type="number" value="15" id="lat">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+
     <div class="container">
       <table class="table table-hover">
         <thead>
@@ -35,7 +80,9 @@
     <script id="entry-template" type="text/x-handlebars-template">
       {{#each this}}
         <tr>
-          <td>{{ properties.place }}</td>
+          <td>
+            <a href="{{ properties.url }}" target="_blank">{{ properties.place }}</a>
+          </td>
           <td>{{ properties.mag }}</td>
           <td>({{ geometry.coordinates }})</td>
         </tr>
