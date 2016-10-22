@@ -1,7 +1,7 @@
 var source   = $("#entry-template").html();
 var template = Handlebars.compile(source);
 
-var baseUrl = "http://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
+var baseUrl = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson";
 
 function query() {
         var startTime = document.getElementById('start').value;
